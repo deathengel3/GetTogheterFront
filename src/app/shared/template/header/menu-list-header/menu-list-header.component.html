@@ -1,0 +1,36 @@
+<mat-list fxLayout fxLayoutGap="20px" class="navigation-items">
+    <div *ngFor="let item of itemsMenu">
+        <button
+        *ngIf="!item.items.length > 0 && item.label !== 'Home'"
+        mat-button
+        [routerLink]="item.link">
+        {{item.label}}
+        </button>
+        <button  *ngIf="item.label === 'Home'" mat-icon-button [routerLink]="item.link">
+        <mat-icon>{{ item.icon }}</mat-icon>
+        </button>
+        <button
+        *ngIf="item.items.length > 0 && item.label !== 'Home'"
+        mat-button [matMenuTriggerFor]="submenu">
+        {{ item.label }}
+        </button>
+        <mat-menu #submenu="matMenu" yPosition="below" xPosition="after" class="menuClass">
+        <div *ngFor="let subitem of item.items" >
+            <button mat-menu-item *ngIf="subitem.items.length > 0" [matMenuTriggerFor]="submenu2">{{ subitem.label }}</button>
+            <button mat-menu-item *ngIf="!subitem.items.length > 0" [routerLink]="subitem.link">{{ subitem.label }}</button>
+            <mat-menu #submenu2="matMenu" class="menuClass">
+                <div *ngFor="let subitem2 of subitem.items" >
+                <button mat-menu-item *ngIf="subitem2.items.length > 0" [matMenuTriggerFor]="submenu3">{{ subitem2.label }}</button>
+                <button mat-menu-item *ngIf="!subitem2.items.length > 0" [routerLink]="subitem2.link">{{ subitem2.label }}</button>
+                <mat-menu #submenu3="matMenu" class="menuClass">
+                    <div *ngFor="let subitem3 of subitem2.items" >
+                        <button mat-menu-item *ngIf="subitem3.items.length > 0" [matMenuTriggerFor]="submenu4">{{ subitem3.label }}</button>
+                        <button mat-menu-item *ngIf="!subitem3.items.length > 0" [routerLink]="subitem3.link">{{ subitem3.label }}</button>
+                    </div>
+                </mat-menu>
+                </div>
+            </mat-menu>
+        </div>
+        </mat-menu>
+    </div>
+</mat-list>

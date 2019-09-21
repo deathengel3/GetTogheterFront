@@ -1,0 +1,13 @@
+<mat-toolbar id="toolbarTop" fxLayout="row">
+    <span class="fill-remaining-space"></span>
+</mat-toolbar>
+<mat-toolbar color="primary" fxLayout="row" id="toolbarBottom" >
+        <div fxHide.gt-sm>
+          <button mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div fxFlex fxLayout fxLayoutAlign="first" fxHide.sm fxHide.xs>
+            <app-menu-list-header></app-menu-list-header>
+        </div>
+</mat-toolbar>

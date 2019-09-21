@@ -1,0 +1,16 @@
+<mat-sidenav-container>
+  <mat-sidenav opened="false" mode="over" #sidenav role="navigation" style="background-color:#008080">
+    <!-- <app-menu (sidenavClose)="sidenav.close()" [titulo]="tituloPag"></app-menu> -->
+  </mat-sidenav>
+  <mat-sidenav-content fxLayout="column">
+    <div class="divSpinner" *ngIf="showSpinner" fxLayout="row wrap" fxLayoutAlign="center center">
+      <!-- <mat-spinner></mat-spinner> -->
+    </div>
+    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+    <main>
+      <app-titulo fxLayout="row" [titulo]="tituloPag"></app-titulo>
+      <mat-divider></mat-divider>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
